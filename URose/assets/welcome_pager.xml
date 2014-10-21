@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<welcomePager>
+
+    <selectpager id="1">
+        <title>介绍</title>
+        <imageName>wel.png</imageName>
+        <url>https://raw.githubusercontent.com/fengmnegchang/android/master/URose/res/drawable-xxhdpi/wel1.jpg</url>
+    </selectpager>
+    
+    <selectpager id="2">
+        <title>导航</title>
+        <imageName>we2.png</imageName>
+        <url>https://raw.githubusercontent.com/fengmnegchang/android/master/URose/res/drawable-xxhdpi/wel2.png</url>
+    </selectpager>
+    
+    <selectpager id="3">
+        <title>分类</title>
+        <imageName>we3.png</imageName>
+        <url>https://raw.githubusercontent.com/fengmnegchang/android/master/URose/res/drawable-xxhdpi/wel3.png</url>
+    </selectpager>
+    
+    <selectpager id="4">
+        <title>引导</title>
+        <imageName>we4.png</imageName>
+        <url>https://raw.githubusercontent.com/fengmnegchang/android/master/URose/res/drawable-xxhdpi/wel4.png</url>
+    </selectpager>
+
+</welcomePager>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">大御守</string>
+    <string name="title_section1">介绍</string>
+    <string name="title_section2">导航</string>
+    <string name="title_section3">分类</string>
+	<string name="g1">人气单品</string>
+	<string name="g2">美衣</string>
+	<string name="g3">男友衣柜</string>
+	<string name="g4">美肤</string>
+	<string name="g5">家具</string>
+	<string name="g6">美鞋</string>
+	
+	<string name="tab_main1">订阅</string>
+	<string name="tab_main2">推荐</string>
+	<string name="tab_main3">发现</string>
+	<string name="tab_main4">我的</string>
+</resources>
