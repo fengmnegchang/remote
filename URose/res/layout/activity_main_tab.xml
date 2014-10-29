@@ -30,33 +30,33 @@
         android:orientation="horizontal" 
         >
 
-        <RadioButton
-            android:id="@+id/radio1"
-            style="@style/tab_child"
-            android:background="@drawable/selector_tab_main_bg"
-            android:drawableTop="@drawable/selector_tab_main1"
-            android:text="@string/tab_main1" />
+<!--         <RadioButton -->
+<!--             android:id="@+id/radio1" -->
+<!--             style="@style/tab_child" -->
+<!--             android:background="@drawable/selector_tab_main_bg" -->
+<!--             android:drawableTop="@drawable/selector_tab_main1" -->
+<!--             android:text="@string/tab_main1" /> -->
                 
-        <RadioButton
-            android:id="@+id/radio2"
-            style="@style/tab_child"
-            android:background="@drawable/selector_tab_main_bg"
-            android:drawableTop="@drawable/selector_tab_main2"
-            android:text="@string/tab_main2" />
+<!--         <RadioButton -->
+<!--             android:id="@+id/radio2" -->
+<!--             style="@style/tab_child" -->
+<!--             android:background="@drawable/selector_tab_main_bg" -->
+<!--             android:drawableTop="@drawable/selector_tab_main2" -->
+<!--             android:text="@string/tab_main2" /> -->
 
-        <RadioButton
-            android:id="@+id/radio3"
-            style="@style/tab_child"
-            android:background="@drawable/selector_tab_main_bg"
-            android:drawableTop="@drawable/selector_tab_main3"
-            android:text="@string/tab_main3" />
+<!--         <RadioButton -->
+<!--             android:id="@+id/radio3" -->
+<!--             style="@style/tab_child" -->
+<!--             android:background="@drawable/selector_tab_main_bg" -->
+<!--             android:drawableTop="@drawable/selector_tab_main3" -->
+<!--             android:text="@string/tab_main3" /> -->
 
-        <RadioButton
-            android:id="@+id/radio4"
-            style="@style/tab_child"
-            android:background="@drawable/selector_tab_main_bg"
-            android:drawableTop="@drawable/selector_tab_main4"
-            android:text="@string/tab_main4" />
+<!--         <RadioButton -->
+<!--             android:id="@+id/radio4" -->
+<!--             style="@style/tab_child" -->
+<!--             android:background="@drawable/selector_tab_main_bg" -->
+<!--             android:drawableTop="@drawable/selector_tab_main4" -->
+<!--             android:text="@string/tab_main4" /> -->
          
     </RadioGroup>
 

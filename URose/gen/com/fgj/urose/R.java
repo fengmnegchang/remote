@@ -56,23 +56,19 @@ public final class R {
     }
     public static final class id {
         public static final int grid_menu=0x7f070002;
-        public static final int img=0x7f070010;
-        public static final int layout01=0x7f07000a;
-        public static final int layout02=0x7f07000b;
-        public static final int layout03=0x7f07000c;
-        public static final int lazyscrollview=0x7f070009;
+        public static final int img=0x7f07000c;
+        public static final int layout01=0x7f070006;
+        public static final int layout02=0x7f070007;
+        public static final int layout03=0x7f070008;
+        public static final int lazyscrollview=0x7f070005;
         public static final int ll=0x7f070001;
-        public static final int loadtext=0x7f07000d;
+        public static final int loadtext=0x7f070009;
         public static final int pager=0x7f070000;
-        public static final int pager_title_strip=0x7f07000e;
-        public static final int progressbar=0x7f070008;
-        public static final int radio1=0x7f070004;
-        public static final int radio2=0x7f070005;
-        public static final int radio3=0x7f070006;
-        public static final int radio4=0x7f070007;
+        public static final int pager_title_strip=0x7f07000a;
+        public static final int progressbar=0x7f070004;
         public static final int radioGroup=0x7f070003;
-        public static final int section_img=0x7f07000f;
-        public static final int title=0x7f070011;
+        public static final int section_img=0x7f07000b;
+        public static final int title=0x7f07000d;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -83,6 +79,7 @@ public final class R {
         public static final int fragment_welcome_dummy=0x7f030005;
         public static final int item_grid_view=0x7f030006;
         public static final int loading=0x7f030007;
+        public static final int radio_style=0x7f030008;
     }
     public static final class string {
         public static final int app_name=0x7f050000;

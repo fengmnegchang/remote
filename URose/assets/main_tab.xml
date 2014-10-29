@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<maintab>
+
+    <tab id="1">
+        <title>订阅</title>
+        <url>https://raw.githubusercontent.com/fengmnegchang/remote/master/URose/res/drawable-hdpi/tab_main1.png</url>
+        <url_night>https://raw.githubusercontent.com/fengmnegchang/remote/master/URose/res/drawable-hdpi/tab_main1_night.png</url_night>
+        <subName>MainActivity.class</subName>
+        <subUrl>com.fgj.urose.MainActivity</subUrl>
+        <subAction></subAction>   
+    </tab>
+    
+    <tab id="2">
+        <title>推荐</title>
+        <url>https://raw.githubusercontent.com/fengmnegchang/remote/master/URose/res/drawable-hdpi/tab_main2.png</url>
+        <url_night>https://raw.githubusercontent.com/fengmnegchang/remote/master/URose/res/drawable-hdpi/tab_main2_night.png</url_night>
+        <subName>WaterfallActivity.class</subName>
+        <subUrl>com.fgj.urose.waterfall.WaterfallActivity</subUrl>
+        <subAction></subAction>
+    </tab>
+    
+    <tab id="3">
+        <title>发现</title>
+        <url>https://raw.githubusercontent.com/fengmnegchang/remote/master/URose/res/drawable-hdpi/tab_main3.png</url>
+        <url_night>https://raw.githubusercontent.com/fengmnegchang/remote/master/URose/res/drawable-hdpi/tab_main3_night.png</url_night>
+        <subName>WaterfallActivity.class</subName>
+        <subUrl>com.fgj.urose.waterfall.WaterfallActivity</subUrl>
+        <subAction></subAction>
+    </tab>
+    
+    <tab id="4">
+        <title>我的</title>
+         <url>https://raw.githubusercontent.com/fengmnegchang/remote/master/URose/res/drawable-hdpi/tab_main4.png</url>
+        <url_night>https://raw.githubusercontent.com/fengmnegchang/remote/master/URose/res/drawable-hdpi/tab_main4_night.png</url_night>
+        <subName>WaterfallActivity.class</subName>
+        <subUrl>com.fgj.urose.waterfall.WaterfallActivity</subUrl>
+        <subAction></subAction>
+   </tab>
+
+</maintab>
