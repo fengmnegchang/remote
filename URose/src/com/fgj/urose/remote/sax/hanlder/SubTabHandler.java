@@ -13,7 +13,7 @@ public class SubTabHandler extends DefaultHandler{
 	private static final String ID = "id";
 	private static final String TITLE = "title";
 	private static final String URL = "url";
-	private static final String URL_NIGHT = "url_night";
+	private static final String URL_NIGHT = "urlNight";
 	
 	
 	private static final String SUB_NAME = "subName";
@@ -47,7 +47,7 @@ public class SubTabHandler extends DefaultHandler{
 			if(TITLE.equals(localName)){
 				tab.setTitle(content);
 			}else if(URL_NIGHT.equals(localName)){
-				tab.setUrlNight(localName);
+				tab.setUrlNight(content);
 			}else if(URL.equals(localName)){
 				tab.setUrl(content);
 			}else if(SUB_NAME.equals(localName)){

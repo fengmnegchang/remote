@@ -1,10 +1,17 @@
 package com.fgj.urose.waterfall;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.res.AssetManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -27,7 +34,7 @@ public class WaterfallActivity extends Activity  implements  LazyScrollView.OnSc
 	/** Called when the activity is first created. */
 	private LinearLayout layout01, layout02, layout03;// 3列
 
-	private List<String> image_filenames = new ArrayList<String>(); // 图片集合
+//	private List<String> image_filenames = new ArrayList<String>(); // 图片集合
 
 	private ImageDownLoadAsyncTask asyncTask;
 
@@ -71,22 +78,43 @@ public class WaterfallActivity extends Activity  implements  LazyScrollView.OnSc
 		layout02 = (LinearLayout) findViewById(R.id.layout02);
 		layout03 = (LinearLayout) findViewById(R.id.layout03);
         
-//        assetManager = getAssets();
+		AssetManager assetManager = getAssets();
         // 获取显示图片宽度
         Image_width = (this.getWindowManager().getDefaultDisplay().getWidth() - 4) / 3;
 //        try {
-//        	
+//        	StringBuilder content = new StringBuilder();
 //            image_filenames = Arrays.asList(assetManager.list("waterfall"));// 获取图片名称
+//            content.append("<?xml version=\"1.0\" encoding=\"utf-8\"?>"+"\n");
+//            content.append("<waterfalls>"+"\n");
+//            int i = 1;
 //            for(String s:image_filenames){
 //                Log.d(tag,s);
+//                content.append("    <waterfall id=\""+i+"\">\n");
+//                content.append("        <title>美女"+i+"</title>\n");
+//                content.append("        <imageName>"+s+"</imageName>\n");
+//                content.append("        <url>https://raw.githubusercontent.com/fengmnegchang/remote/master/URose/assets/waterfall/"+s+"</url>\n");
+//                content.append("        <subName></subName>\n");
+//                content.append("        <subUrl></subUrl>\n");
+//                content.append("        <subAction></subAction>\n");
+//                content.append("    </waterfall>\n");
+//                i++;
 //            }
+//            content.append("</waterfalls>");
+//            String path = Environment.getExternalStorageDirectory()
+//                    .getPath() 
+//                    +"/"+"waterfalls.xml"; 
+//            File fileName = new File(path); 
+//            FileOutputStream fileOutputStream = new FileOutputStream(fileName);
+//            fileOutputStream.write(content.toString().getBytes("utf-8")); 
+//            fileOutputStream.flush();
+//            fileOutputStream.close();
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
 
-        for(Waterfall water : falls.getFalls()){
-        	image_filenames.add(water.getUrl());
-        }
+//        for(Waterfall water : falls.getFalls()){
+//        	image_filenames.add(water.getUrl());
+//        }
         addImage(current_page, count);
     }
 
@@ -100,10 +128,10 @@ public class WaterfallActivity extends Activity  implements  LazyScrollView.OnSc
      * @param i
      *            行
      */
-    public void addBitMapToImage(String imagePath, int j, int i) {
+    public void addBitMapToImage(String imagePath, int j, int i,String imgName) {
         ImageView imageView = getImageview();
         asyncTask = new ImageDownLoadAsyncTask(this, imagePath, imageView,
-                Image_width);
+                Image_width,imgName);
         asyncTask.setProgressbar(progressbar);
         asyncTask.setLoadtext(loadtext);
         asyncTask.execute(imagePath);
@@ -167,8 +195,11 @@ public class WaterfallActivity extends Activity  implements  LazyScrollView.OnSc
 	 */
 	private void addImage(int current_page, int count) {
 		for (int x = current_page * count; x < (current_page + 1) * count
-				&& x < image_filenames.size(); x++) {
-			addBitMapToImage(image_filenames.get(x), y, x);
+				&& x < falls.getSize(); x++) {
+			addBitMapToImage(falls.getFalls().get(x).getUrl(),
+					y, 
+					x,
+					falls.getFalls().get(x).getImageName());
 			y++;
 			if (y >= 3)
 				y = 0;

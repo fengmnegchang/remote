@@ -11,6 +11,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
@@ -23,7 +24,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -281,7 +281,9 @@ public class WelcomeActivityNew extends FragmentActivity  implements OnPageChang
 //					getActivity().getPackageName());
 //			dummyImg.setBackgroundResource(resId);
 			
-			taks = new WelPagerAsyncTask(dummyImg){
+			taks = new WelPagerAsyncTask(dummyImg,
+					getActivity().getApplicationContext(),
+					welPager.getPagers().get(position-1).getImageName()){
 //				@Override
 //				protected void handleMessage(Message msg) {
 //					super.handleMessage(msg);
@@ -368,8 +370,12 @@ public class WelcomeActivityNew extends FragmentActivity  implements OnPageChang
 	
 	private static class WelPagerAsyncTask extends AsyncTask<String,Integer,Drawable>{
 		private RelativeLayout layout;
-		public WelPagerAsyncTask(RelativeLayout layout){
+		private Context context;
+		private String localResName;
+		public WelPagerAsyncTask(RelativeLayout layout,Context context,String localResName){
 			this.layout = layout;
+			this.context = context;
+			this.localResName = localResName;
 		}
 		@Override
 		protected void onPreExecute() {
@@ -387,7 +393,10 @@ public class WelcomeActivityNew extends FragmentActivity  implements OnPageChang
 				msg.what = 1;
             }else {
             	msg.what = 0;
-            	layout.setBackgroundResource(R.drawable.icon);
+            	int resId = context.getResources().getIdentifier(localResName, 
+    					"drawable",
+    					context.getPackageName());
+            	layout.setBackgroundResource(resId);
             }
 			handleMessage(msg);
 		}

@@ -3,31 +3,31 @@
 
     <advertise id="1">
         <title>广告1</title>
-        <imageName>main1.png</imageName>
+        <imageName>main1</imageName>
         <url>https://raw.githubusercontent.com/fengmnegchang/remote/master/URose/assets/main1.png</url>
     </advertise>
     
     <advertise id="2">
         <title>广告2</title>
-        <imageName>main2.png</imageName>
+        <imageName>main2</imageName>
         <url>https://raw.githubusercontent.com/fengmnegchang/remote/master/URose/assets/main2.png</url>
     </advertise>
     
     <advertise id="3">
         <title>广告3</title>
-        <imageName>main3.png</imageName>
+        <imageName>main3</imageName>
         <url>https://raw.githubusercontent.com/fengmnegchang/remote/master/URose/assets/main3.png</url>
     </advertise>
     
     <advertise id="4">
         <title>广告4</title>
-        <imageName>main4.png</imageName>
+        <imageName>main4</imageName>
         <url>https://raw.githubusercontent.com/fengmnegchang/remote/master/URose/assets/main4.png</url>
     </advertise>
     
     <menu id ="1">
         <title>人气单品</title>
-        <imageName>g1.png</imageName>
+        <imageName>g1</imageName>
         <url>https://raw.githubusercontent.com/fengmnegchang/remote/master/URose/res/drawable-hdpi/g1.png</url>
         <subName></subName>
         <subUrl></subUrl>
@@ -36,7 +36,7 @@
     
     <menu id ="2">
         <title>美衣</title>
-        <imageName>g2.png</imageName>
+        <imageName>g2</imageName>
         <url>https://raw.githubusercontent.com/fengmnegchang/remote/master/URose/res/drawable-hdpi/g2.png</url>
         <subName></subName>
         <subUrl></subUrl>
@@ -45,7 +45,7 @@
     
     <menu id ="3">
         <title>男友衣柜</title>
-        <imageName>g3.png</imageName>
+        <imageName>g3</imageName>
         <url>https://raw.githubusercontent.com/fengmnegchang/remote/master/URose/res/drawable-hdpi/g3.png</url>
         <subName></subName>
         <subUrl></subUrl>
@@ -54,7 +54,7 @@
     
     <menu id ="4">
         <title>美肤</title>
-        <imageName>g4.png</imageName>
+        <imageName>g4</imageName>
         <url>https://raw.githubusercontent.com/fengmnegchang/remote/master/URose/res/drawable-hdpi/g4.png</url>
         <subName></subName>
         <subUrl></subUrl>
@@ -63,7 +63,7 @@
     
     <menu id ="5">
         <title>家具</title>
-        <imageName>g5.png</imageName>
+        <imageName>g5</imageName>
         <url>https://raw.githubusercontent.com/fengmnegchang/remote/master/URose/res/drawable-hdpi/g5.png</url>
         <subName></subName>
         <subUrl></subUrl>
@@ -72,7 +72,7 @@
     
     <menu id ="6">
         <title>美鞋</title>
-        <imageName>g6.png</imageName>
+        <imageName>g6</imageName>
         <url>https://raw.githubusercontent.com/fengmnegchang/remote/master/URose/res/drawable-hdpi/g6.png</url>
         <subName></subName>
         <subUrl></subUrl>
@@ -81,7 +81,7 @@
     
     <menu id ="7">
         <title>添加</title>
-        <imageName>g7.png</imageName>
+        <imageName>g7</imageName>
         <url>https://raw.githubusercontent.com/fengmnegchang/remote/master/URose/res/drawable-hdpi/g7.png</url>
         <subName></subName>
         <subUrl></subUrl>

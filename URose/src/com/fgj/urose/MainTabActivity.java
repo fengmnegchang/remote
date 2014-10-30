@@ -82,7 +82,7 @@ public class MainTabActivity extends TabActivity implements OnCheckedChangeListe
 			mRadioGroup.addView(radio,new LayoutParams(dm.widthPixels/mainTab.getSize()
 					,LayoutParams.WRAP_CONTENT));
 			
-			TabAsyncTask tabTask = new TabAsyncTask(radio,this);
+			TabAsyncTask tabTask = new TabAsyncTask(radio,MainTabActivity.this,tab.getUrlNight());
 			tabTask.execute(tab.getUrl());
 		}
 //		TabSpec tab_main1 = mTabHost.newTabSpec(getString(R.string.tab_main1));
@@ -166,9 +166,11 @@ public class MainTabActivity extends TabActivity implements OnCheckedChangeListe
 	private static class TabAsyncTask extends AsyncTask<String,Integer,Drawable>{
 		RadioButton radio;
 		Context context;
-		public TabAsyncTask(RadioButton radio,Context context){
+		String localResName;
+		public TabAsyncTask(RadioButton radio,Context context,String localResName){
 			this.radio = radio;
 			this.context = context;
+			this.localResName = localResName;
 		}
 		@Override
 		protected void onPreExecute() {
@@ -186,7 +188,10 @@ public class MainTabActivity extends TabActivity implements OnCheckedChangeListe
 				msg.what = 1;
             }else {
             	msg.what = 0;
-            	Drawable drawable= context.getResources().getDrawable(R.drawable.icon); 
+            	int resId = context.getResources().getIdentifier(localResName, 
+    					"drawable",
+    					context.getPackageName());
+            	Drawable drawable= context.getResources().getDrawable(resId); 
             	radio.setCompoundDrawablesRelativeWithIntrinsicBounds(null, drawable, null, null);
             }
 			handleMessage(msg);

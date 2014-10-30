@@ -5,6 +5,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -74,7 +75,7 @@ public class MainActivity extends FragmentActivity implements OnPageChangeListen
 		mViewPager.setOnPageChangeListener(this);
 		
 		menuView = (GridView) findViewById(R.id.grid_menu);
-		menuView.setAdapter(new GridAapter());
+		menuView.setAdapter(new GridAapter(MainActivity.this));
 		menuView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
@@ -115,6 +116,10 @@ public class MainActivity extends FragmentActivity implements OnPageChangeListen
 	}
 	
 	private class GridAapter extends BaseAdapter{
+		Context context;
+		public GridAapter(Context context){
+			this.context = context;
+		}
 
 		@Override
 		public int getCount() {
@@ -148,7 +153,7 @@ public class MainActivity extends FragmentActivity implements OnPageChangeListen
 			}
 //			viewHolder.img.setImageResource(icons[position]);
 //			viewHolder.title.setText(menus[position]);
-			menuTaks = new MenuAsyncTask(viewHolder.img);
+			menuTaks = new MenuAsyncTask(viewHolder.img,context,online.getMenus().get(position).getImageName());
 			menuTaks.execute(online.getMenus().get(position).getUrl());
 			viewHolder.title.setText(online.getMenus().get(position).getTitle());
 			return convertView;
@@ -233,7 +238,8 @@ public class MainActivity extends FragmentActivity implements OnPageChangeListen
 //				e.printStackTrace();
 //				dummyImg.setImageResource(R.drawable.ic_launcher);
 //			}
-			taks = new AdvertAsyncTask(dummyImg);
+			taks = new AdvertAsyncTask(dummyImg,getActivity().getApplicationContext(),
+					online.getAdverts().get(position-1).getImageName());
 			taks.execute(online.getAdverts().get(position-1).getUrl());
 			
 			return rootView;
@@ -292,8 +298,12 @@ public class MainActivity extends FragmentActivity implements OnPageChangeListen
 	
 	private static class AdvertAsyncTask extends AsyncTask<String,Integer,Drawable>{
 		private RelativeLayout layout;
-		public AdvertAsyncTask(RelativeLayout layout){
+		Context context;
+		String localResName;
+		public AdvertAsyncTask(RelativeLayout layout,Context context,String localResName){
 			this.layout = layout;
+			this.context = context;
+			this.localResName = localResName;
 		}
 		@Override
 		protected void onPreExecute() {
@@ -311,7 +321,10 @@ public class MainActivity extends FragmentActivity implements OnPageChangeListen
 				msg.what = 1;
             }else {
             	msg.what = 0;
-            	layout.setBackgroundResource(R.drawable.icon);
+            	int resId = context.getResources().getIdentifier(localResName, 
+    					"drawable",
+    					context.getPackageName());
+            	layout.setBackgroundResource(resId);
             }
 			handleMessage(msg);
 		}
@@ -353,8 +366,12 @@ public class MainActivity extends FragmentActivity implements OnPageChangeListen
 	
 	private static class MenuAsyncTask extends AsyncTask<String,Integer,Bitmap>{
 		ImageView img;
-		public MenuAsyncTask(ImageView img){
+		Context context;
+		String localResName;
+		public MenuAsyncTask(ImageView img,Context context,String localResName){
 			this.img = img;
+			this.context = context;
+			this.localResName = localResName;
 		}
 		@Override
 		protected void onPreExecute() {
@@ -372,7 +389,10 @@ public class MainActivity extends FragmentActivity implements OnPageChangeListen
 				msg.what = 1;
             }else {
             	msg.what = 0;
-            	img.setImageResource(R.drawable.icon);
+            	int resId = context.getResources().getIdentifier(localResName, 
+    					"drawable",
+    					context.getPackageName());
+            	img.setImageResource(resId);
             }
 			handleMessage(msg);
 		}

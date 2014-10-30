@@ -11,7 +11,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="horizontal" 
-            android:background="@drawable/sliding_bg"
+            android:background="@drawable/a_mi_rabbit"
             >
 
             <include layout="@layout/left_menu" />
@@ -19,7 +19,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" 
-                android:background="@drawable/background"
+                android:background="@drawable/miui"
                 >
                 <include layout="@layout/activity_main_tab"/>
             </LinearLayout>

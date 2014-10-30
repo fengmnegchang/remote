@@ -34,7 +34,7 @@ public class ImageDownLoadAsyncTask extends AsyncTask<String, Integer, Bitmap> {
 	private final String file = "waterfall/";
 	private LinearLayout progressbar;
 	private TextView loadtext;
-
+	private String imgName;
 	/**
 	 * 构造方法
 	 * 
@@ -43,12 +43,13 @@ public class ImageDownLoadAsyncTask extends AsyncTask<String, Integer, Bitmap> {
 	 * @param imageView
 	 */
 	public ImageDownLoadAsyncTask(Context context, String imagePath,
-			ImageView imageView, int Image_width) {
+			ImageView imageView, int Image_width,String imgName) {
 		this.imagePath = imagePath;
 		this.imageView = imageView;
 		this.context = context;
 		assetManager = this.context.getAssets();
 		this.Image_width = Image_width;
+		this.imgName = imgName;
 	}
 
 	public void setLoadtext(TextView loadtext) {
@@ -71,6 +72,13 @@ public class ImageDownLoadAsyncTask extends AsyncTask<String, Integer, Bitmap> {
             Bitmap bitmap = BitmapFactory.decodeStream(hr.getEntity().getContent());
 			return bitmap;
 		} catch (IOException e) {
+			try {
+				InputStream inputStream = assetManager.open(file + imgName);
+				Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+				return bitmap;
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
 			e.printStackTrace();
 		}
 		return null;
