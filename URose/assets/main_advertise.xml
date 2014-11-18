@@ -29,8 +29,8 @@
         <title>人气单品</title>
         <imageName>g1</imageName>
         <url>https://raw.githubusercontent.com/fengmnegchang/remote/master/URose/res/drawable-hdpi/g1.png</url>
-        <subName></subName>
-        <subUrl></subUrl>
+        <subName>UmeiActivity.class</subName>
+        <subUrl>com.fgj.urose.umei.UmeiActivity</subUrl>
         <subAction></subAction>
     </menu>
     

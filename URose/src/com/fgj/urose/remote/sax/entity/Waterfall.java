@@ -7,22 +7,21 @@ public class Waterfall implements Serializable,Cloneable{
 	private static final long serialVersionUID = 1L;
 	
 	private int id;
-	private String title;
-	private String imageName;
-	private String url;
+	private String title="";
+	private String imageName="";
+	private String url="";
 	
-	private String subName;
-	private String subUrl;
-	private String subAction;
-	
+	private String subName="";
+	private String subUrl="";
+	private String subAction="";
+	private String date="";
 	
 	
 	public Waterfall(){
 		
 	}
 
-	@Override
-	public Waterfall clone() throws CloneNotSupportedException {
+	public Object clone() throws CloneNotSupportedException {
 		Waterfall fall = null;
 		try {
 			fall = (Waterfall) super.clone();
@@ -104,6 +103,16 @@ public class Waterfall implements Serializable,Cloneable{
 	public void setSubAction(String subAction) {
 		if(subAction!=null){
 			this.subAction = subAction;
+		}
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		if(date!=null){
+			this.date = date;
 		}
 	}
 

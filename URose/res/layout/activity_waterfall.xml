@@ -28,7 +28,9 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:orientation="vertical" >
+                android:orientation="vertical" 
+                android:descendantFocusability="beforeDescendants"
+                >
             </LinearLayout>
 
             <LinearLayout
@@ -36,7 +38,9 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:orientation="vertical" >
+                android:orientation="vertical"
+                android:descendantFocusability="beforeDescendants"
+                 >
             </LinearLayout>
 
             <LinearLayout
@@ -44,7 +48,9 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
-                android:orientation="vertical" >
+                android:orientation="vertical" 
+                android:descendantFocusability="beforeDescendants"
+                >
             </LinearLayout>
         </LinearLayout>
     </com.fgj.urose.waterfall.LazyScrollView>

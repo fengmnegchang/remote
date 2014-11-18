@@ -46,8 +46,8 @@ public class MainTabActivity extends TabActivity implements OnCheckedChangeListe
 	public void onCreate(final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-//		setContentView(R.layout.activity_main_tab);
-		setContentView(R.layout.activity_sliding_menu);
+		setContentView(R.layout.activity_main_tab);
+//		setContentView(R.layout.activity_sliding_menu);
 		
 		subTabService = new SubTabService(this);
 		mainTab = subTabService.getTabs();
