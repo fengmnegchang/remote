@@ -15,7 +15,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.fgj.urose.umei.UmeiActivity"
+            android:name="com.fgj.urose.WelcomeActivityNew"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,7 +36,7 @@
             android:label="@string/app_name" 
             />
         <activity 
-            android:name="com.fgj.urose.WelcomeActivityNew"
+            android:name="com.fgj.urose.umei.UmeiActivity"
             android:theme="@style/AppTheme"
             android:label="@string/app_name" 
             />

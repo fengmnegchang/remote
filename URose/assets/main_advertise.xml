@@ -26,9 +26,9 @@
     </advertise>
     
     <menu id ="1">
-        <title>人气单品</title>
+        <title>优美高清</title>
         <imageName>g1</imageName>
-        <url>https://raw.githubusercontent.com/fengmnegchang/remote/master/URose/res/drawable-hdpi/g1.png</url>
+        <url>https://raw.githubusercontent.com/fengmnegchang/remote/master/URose/res/drawable-hdpi/g1.jpg</url>
         <subName>UmeiActivity.class</subName>
         <subUrl>com.fgj.urose.umei.UmeiActivity</subUrl>
         <subAction></subAction>

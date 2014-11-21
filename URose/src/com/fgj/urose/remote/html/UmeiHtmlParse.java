@@ -74,9 +74,9 @@ public class UmeiHtmlParse {
 		ArrayList<Waterfall> waterlist = new ArrayList<Waterfall>();
 		
 		getTagsContent(URL, waterlist);
-		for(int i=2;i<=pagersize;i++){
-			getTagsContent("http://www.umei.cc/p/gaoqing/rihan/index-"+i+".htm", waterlist);
-		}	
+//		for(int i=2;i<=pagersize;i++){
+//			getTagsContent("http://www.umei.cc/p/gaoqing/rihan/index-"+i+".htm", waterlist);
+//		}	
 		falls.setFalls(waterlist);
 		return falls;
 	}
