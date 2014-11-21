@@ -39,7 +39,6 @@ public class WaterfallService {
 			reader.parse(new InputSource(context.getAssets().open(
 					"waterfalls.xml")));
 			falls.setFalls(handler.getWaters());
-			;
 			falls.setSize(handler.getWaters().size());
 
 		} catch (SAXException e) {

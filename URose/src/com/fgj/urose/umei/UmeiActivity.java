@@ -74,32 +74,32 @@ public class UmeiActivity extends FragmentActivity {
 
 	private void setupTest1() {
 		Tab tab = actionBar.newTab();
-		tab.setContentDescription("Tab 1");
-		tab.setText("Tab 1");
+		tab.setContentDescription("日韩");
+		tab.setText("日韩");
 		tab.setTabListener(mTabListener);
 		actionBar.addTab(tab);
 	}
 
 	private void setupTest2() {
 		Tab tab = actionBar.newTab();
-		tab.setContentDescription("Tab 2");
-		tab.setText("Tab 2");
+		tab.setContentDescription("国内");
+		tab.setText("国内");
 		tab.setTabListener(mTabListener);
 		actionBar.addTab(tab);
 	}
 
 	private void setupTest3() {
 		Tab tab = actionBar.newTab();
-		tab.setContentDescription("Tab 3");
-		tab.setText("Tab 3");
+		tab.setContentDescription("港台");
+		tab.setText("港台");
 		tab.setTabListener(mTabListener);
 		actionBar.addTab(tab);
 	}
 
 	private void setupTest4() {
 		Tab tab = actionBar.newTab();
-		tab.setContentDescription("Tab 4");
-		tab.setText("Tab 4");
+		tab.setContentDescription("最新");
+		tab.setText("最新");
 		tab.setTabListener(mTabListener);
 		actionBar.addTab(tab);
 	}
