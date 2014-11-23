@@ -68,7 +68,99 @@ public class UmeiHtmlParse {
         }
 
 	}
+	public Waterfalls getHtmlDetail(String url){
+		Waterfalls falls = new Waterfalls();
+		ArrayList<Waterfall> waterlist = new ArrayList<Waterfall>();
+		getDetailTagsContent(URL, waterlist);
+		falls.setCurrentpager(currentpager);
+		falls.setPagersize(pagersize);
+		falls.setSize(size);
+		falls.setFalls(waterlist);
+		return falls;
+	}
 	
+	private void getDetailTagsContent(String url,
+			ArrayList<Waterfall> waterlist) {
+		String html = getHtmlString(url);
+		try {
+			Parser parser = Parser.createParser(html, "GBK");
+			// 页数
+			NodeFilter pagefilter = new HasAttributeFilter("class", "pages");
+			NodeList pageList = parser.extractAllNodesThatMatch(pagefilter);
+
+			Node anode = pageList.elementAt(1);
+			NodeList anodeList = anode.getChildren();
+			int anodesize = anodeList.size();
+			for (int i = 0; i < anodesize; i++) {
+				try {
+					LinkTag atag = (LinkTag) anodeList.elementAt(i);
+					System.out.println(atag.getAttribute("href"));
+					System.out.println(atag.toPlainTextString());
+					if (i == 0) {
+						// 共计个数
+						String content = atag.toPlainTextString().replace("上一页", "");
+						size = Integer.parseInt(content);
+					}
+
+					if (i > 3) {
+						// 最大页数
+						String content = atag.toPlainTextString().replace(" ","");
+						if(content.equals("下一页")){
+							pagersize = Integer.parseInt(content);
+						}
+					}
+
+				} catch (Exception e) {
+					// 当前页面
+					Node span = (Node) anodeList.elementAt(i);
+					String content = span.toPlainTextString().replace(" ","");
+					if(!content.endsWith("")){
+						currentpager = Integer.parseInt(content);
+					}
+				}
+			}
+			// 内容
+			Parser contentparser = Parser.createParser(html, "GBK");
+			NodeFilter attrfilter = new HasAttributeFilter("class", "image_box");
+			NodeList nodeList = contentparser
+					.extractAllNodesThatMatch(attrfilter);
+			int size = nodeList.size();
+			/**
+			 * <div class="img_box">
+			 * <a href="http://www.umei.cc/pic_l.htm?http://i7.umei.cc//img2012/2014/11/14/012xiezhen/yukata-004.jpg&.htm" target="_blank" title="[(コスプレ写真集)[kibashi(キバシ)]「とある魔術の禁書目録 神裂火織 yukata」[106P]">
+			 * <img class="IMG_show" border="0" src="./[(コスプレ写真集)[kibashi(キバシ)]「とある魔術の禁書目録 神裂火織 yukata」[106P]_files/yukata-004.jpg" alt="[(コスプレ写真集)[kibashi(キバシ)]「とある魔術の禁書目録 神裂火織 yukata」[106P]" width="1200" height="1804" style="cursor: url(http://img.baidu.com/img/baike/editor/zoomin.cur), pointer;">
+			 * </a>
+			 * </div>
+			 * <div class="clear"></div>
+			 * **/
+			Waterfall fall;
+			for(int i=0;i<size;i++){
+				fall = new Waterfall();
+				LinkTag atag = null;
+				try {
+					Node node = nodeList.elementAt(i);
+					atag = (LinkTag) node.getFirstChild();
+					System.out.println(atag.getAttribute("href"));
+					System.out.println(atag.getAttribute("title"));
+					System.out.println(atag.toPlainTextString());
+					fall.setTitle(atag.getAttribute("title"));
+					fall.setSubUrl(atag.getAttribute("href"));
+				} catch (Exception e) {
+				}
+				try {
+					ImageTag img = (ImageTag) atag.getFirstChild();
+					System.out.println(img.getAttribute("alt"));
+					System.out.println(img.getAttribute("src"));
+					fall.setUrl(img.getAttribute("src"));
+					fall.setImageName(img.getAttribute("alt"));
+				} catch (Exception e) {
+				}
+				waterlist.add(fall);
+			}
+		}catch(Exception e){
+			
+		}	
+	}
 	public static Waterfalls getHtmlFalls(){
 		Waterfalls falls = new Waterfalls();
 		ArrayList<Waterfall> waterlist = new ArrayList<Waterfall>();

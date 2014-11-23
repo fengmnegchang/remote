@@ -9,6 +9,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
@@ -20,6 +21,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -44,6 +47,18 @@ public class UmeiFragment extends Fragment {
 			if(msg.what==1000){
 				umeiAdapter = new UmeiAdapter(falls);
 		        listview.setAdapter(umeiAdapter);
+		        listview.setOnItemClickListener(new OnItemClickListener() {
+					@Override
+					public void onItemClick(AdapterView<?> arg0, View view,
+							int arg2, long arg3) {
+						UmeiAdapter.ViewHolder holder = (com.fgj.urose.umei.UmeiFragment.UmeiAdapter.ViewHolder) view.getTag();
+						Intent intent = new Intent();
+						intent.putExtra("gaoqingurl", holder.subUrl.getText().toString());
+						intent.setClass(getActivity().getApplicationContext(), 
+								UmeiGaoqingActivity.class);
+						getActivity().startActivity(intent);
+					}
+				});
 			}
 			super.handleMessage(msg);
 		}
