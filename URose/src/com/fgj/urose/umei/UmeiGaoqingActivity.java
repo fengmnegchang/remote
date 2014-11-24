@@ -85,7 +85,6 @@ public class UmeiGaoqingActivity extends FragmentActivity  implements OnPageChan
 	private void initDots() {
 		LinearLayout ll = (LinearLayout) findViewById(R.id.ll);
 		dots = new ImageView[welPager.getSize()];
-		// 循环取得小点图片
 		for (int i = 0; i < welPager.getSize(); i++) {
 			ImageView img = new ImageView(getApplicationContext());
 			img.setImageResource(R.drawable.dot);
@@ -94,7 +93,7 @@ public class UmeiGaoqingActivity extends FragmentActivity  implements OnPageChan
 			img.setClickable(true);
 			
 			dots[i] = img;
-			dots[i].setEnabled(true);// 都设为灰色
+			dots[i].setEnabled(true); 
 			dots[i].setOnClickListener(this);
 			dots[i].setTag(i); 
 			
@@ -102,7 +101,7 @@ public class UmeiGaoqingActivity extends FragmentActivity  implements OnPageChan
 		}
 
 		currentIndex = 0;
-		dots[currentIndex].setEnabled(false);// 设置为白色，即选中状态
+		dots[currentIndex].setEnabled(false); 
 	}
 
 	 /**

@@ -164,12 +164,14 @@ public class UmeiHtmlParse {
 	public static Waterfalls getHtmlFalls(){
 		Waterfalls falls = new Waterfalls();
 		ArrayList<Waterfall> waterlist = new ArrayList<Waterfall>();
-		
-		getTagsContent(URL, waterlist);
-//		for(int i=2;i<=pagersize;i++){
-//			getTagsContent("http://www.umei.cc/p/gaoqing/rihan/index-"+i+".htm", waterlist);
-//		}	
-		falls.setFalls(waterlist);
+		try {
+			getTagsContent(URL, waterlist);
+//			for(int i=2;i<=pagersize;i++){
+//				getTagsContent("http://www.umei.cc/p/gaoqing/rihan/index-"+i+".htm", waterlist);
+//			}	
+			falls.setFalls(waterlist);
+		} catch (Exception e) {
+		}
 		return falls;
 	}
 

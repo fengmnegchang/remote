@@ -17,7 +17,8 @@
         android:layout_height="match_parent" 
         android:background="@drawable/icon"
         android:gravity="center"
-        android:minHeight="350dp"
+        android:minHeight="340dp"
+        android:scaleType="fitCenter"
         />
     
 	<TextView 

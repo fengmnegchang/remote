@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -80,6 +81,9 @@ public class UmeiFragment extends Fragment {
 			public void run() {
 				waterfallService = new WaterfallService(getActivity().getApplicationContext());
 		        falls = waterfallService.getUmeiWaters();
+		        if(falls.getFalls()==null){
+		        	falls = waterfallService.getWaters();
+		        }
 		        handler.sendEmptyMessage(1000);
 			}
 		});
@@ -104,11 +108,17 @@ public class UmeiFragment extends Fragment {
 
 		@Override
 		public int getCount() {
+			if(falls.getFalls() ==null){
+				return 0;
+			}
 			return falls.getFalls().size();
 		}
 
 		@Override
 		public Object getItem(int arg0) {
+			if(falls.getFalls() ==null){
+				return null;
+			}
 			return falls.getFalls().get(arg0);
 		}
 
@@ -184,7 +194,8 @@ public class UmeiFragment extends Fragment {
 					InputStream inputStream = context.getResources().getAssets().open("waterfall/"
 							+ localResName);
 					Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-					img.setImageBitmap(bitmap);
+					Drawable drawable =new BitmapDrawable(bitmap);
+					img.setBackground(drawable);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
