@@ -4,25 +4,25 @@
     <selectpager id="1">
         <title>介绍</title>
         <imageName>wel1</imageName>
-        <url>https://raw.githubusercontent.com/fengmnegchang/remote/master/URose/res/drawable-xxhdpi/wel1.jpg</url>
+        <url>http://images.enrz.com/wp-content/uploads/2016/10/285A8322.jpg</url>
     </selectpager>
     
     <selectpager id="2">
         <title>导航</title>
         <imageName>wel2</imageName>
-        <url>https://raw.githubusercontent.com/fengmnegchang/remote/master/URose/res/drawable-xxhdpi/wel2.png</url>
+        <url>http://images.enrz.com/wp-content/uploads/2016/08/50A6614.jpg</url>
     </selectpager>
     
     <selectpager id="3">
         <title>分类</title>
         <imageName>wel3</imageName>
-        <url>https://raw.githubusercontent.com/fengmnegchang/remote/master/URose/res/drawable-xxhdpi/wel3.png</url>
+        <url>http://images.enrz.com/wp-content/uploads/2016/12/fanbingbing.jpg</url>
     </selectpager>
     
     <selectpager id="4">
         <title>引导</title>
         <imageName>wel4</imageName>
-        <url>https://raw.githubusercontent.com/fengmnegchang/remote/master/URose/res/drawable-xxhdpi/wel4.png</url>
+        <url>http://images.enrz.com/wp-content/uploads/2016/12/yangmi.jpg</url>
     </selectpager>
 
 </welcomePager>
