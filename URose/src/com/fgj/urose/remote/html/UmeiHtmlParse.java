@@ -16,6 +16,7 @@ import org.htmlparser.Node;
 import org.htmlparser.NodeFilter;
 import org.htmlparser.Parser;
 import org.htmlparser.filters.HasAttributeFilter;
+import org.htmlparser.filters.TagNameFilter;
 import org.htmlparser.tags.ImageTag;
 import org.htmlparser.tags.LinkTag;
 import org.htmlparser.util.NodeList;
@@ -83,9 +84,9 @@ public class UmeiHtmlParse {
 			ArrayList<Waterfall> waterlist) {
 		String html = getHtmlString(url);
 		try {
-			Parser parser = Parser.createParser(html, "GBK");
+			Parser parser = Parser.createParser(html, "UTF-8");
 			// 页数
-			NodeFilter pagefilter = new HasAttributeFilter("class", "pages");
+			NodeFilter pagefilter = new HasAttributeFilter("class", "NewPages");
 			NodeList pageList = parser.extractAllNodesThatMatch(pagefilter);
 
 			Node anode = pageList.elementAt(1);
@@ -120,18 +121,20 @@ public class UmeiHtmlParse {
 				}
 			}
 			// 内容
-			Parser contentparser = Parser.createParser(html, "GBK");
-			NodeFilter attrfilter = new HasAttributeFilter("class", "image_box");
+			Parser contentparser = Parser.createParser(html, "UTF-8");
+			NodeFilter attrfilter = new HasAttributeFilter("class", "TypeList");
+			NodeFilter lifilter = new TagNameFilter("li");
 			NodeList nodeList = contentparser
-					.extractAllNodesThatMatch(attrfilter);
+					.extractAllNodesThatMatch(attrfilter).extractAllNodesThatMatch(lifilter);
 			int size = nodeList.size();
 			/**
-			 * <div class="img_box">
-			 * <a href="http://www.umei.cc/pic_l.htm?http://i7.umei.cc//img2012/2014/11/14/012xiezhen/yukata-004.jpg&.htm" target="_blank" title="[(コスプレ写真集)[kibashi(キバシ)]「とある魔術の禁書目録 神裂火織 yukata」[106P]">
-			 * <img class="IMG_show" border="0" src="./[(コスプレ写真集)[kibashi(キバシ)]「とある魔術の禁書目録 神裂火織 yukata」[106P]_files/yukata-004.jpg" alt="[(コスプレ写真集)[kibashi(キバシ)]「とある魔術の禁書目録 神裂火織 yukata」[106P]" width="1200" height="1804" style="cursor: url(http://img.baidu.com/img/baike/editor/zoomin.cur), pointer;">
-			 * </a>
-			 * </div>
-			 * <div class="clear"></div>
+	<li>
+        	<a href="http://www.umei.cc/p/gaoqing/rihan/16207.htm" class="TypeBigPics" target="_blank"><img src="http://i1.umei.cc/uploads/tu/201609/543/c1.jpg" width="180" height="270" /><div class="ListTit">[RQ-STAR]2015.07.13 Rina Itoh いとうりな Race Queen</div></a>
+        	<div class="TypePicInfos">
+            <div class="TypePicTags"><a href='/tags/zhifu.htm' title=制服>制服</a><a href='/tags/RQ_Star.htm' title=RQ-Star>RQ-Star</a><a href='/tags/meinv.htm' title=美女>美女</a></div>
+             <div class="txtInfo gray"><em class="IcoList">查看：111次</em><em class="IcoTime">09-14</em></div>
+            </div>
+        </li>
 			 * **/
 			Waterfall fall;
 			for(int i=0;i<size;i++){
@@ -178,7 +181,7 @@ public class UmeiHtmlParse {
 	public static void getTagsContent(String urlStr, ArrayList<Waterfall> waterlist) {
 		String html = getHtmlString(urlStr);
 		try {
-			Parser parser = Parser.createParser(html, "GBK");
+			Parser parser = Parser.createParser(html, "UTF-8");
 
 			/**
 			 * <div class="pages"> <a
@@ -189,7 +192,7 @@ public class UmeiHtmlParse {
 			 * href="http://www.umei.cc/p/gaoqing/rihan/index-2.htm">2</a>
 			 * **/
 			// 页数
-			NodeFilter pagefilter = new HasAttributeFilter("class", "pages");
+			NodeFilter pagefilter = new HasAttributeFilter("class", "NewPages");
 			NodeList pageList = parser.extractAllNodesThatMatch(pagefilter);
 
 			Node anode = pageList.elementAt(0);
@@ -223,7 +226,7 @@ public class UmeiHtmlParse {
 			}
 
 			// 内容
-			Parser contentparser = Parser.createParser(html, "GBK");
+			Parser contentparser = Parser.createParser(html, "UTF-8");
 			NodeFilter attrfilter = new HasAttributeFilter("class", "t");
 			NodeList nodeList = contentparser
 					.extractAllNodesThatMatch(attrfilter);
@@ -320,7 +323,7 @@ public class UmeiHtmlParse {
 				// inputStream = context.getAssets().open(
 				// "www.umei.cc.htm");
 				bw = new BufferedReader(new InputStreamReader(inputStream,
-						"GBK"));
+						"UTF-8"));
 				while ((line = bw.readLine()) != null) {
 					sb.append(line);
 					System.out.println(line);

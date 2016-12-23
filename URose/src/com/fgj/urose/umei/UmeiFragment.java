@@ -81,9 +81,9 @@ public class UmeiFragment extends Fragment {
 			public void run() {
 				waterfallService = new WaterfallService(getActivity().getApplicationContext());
 		        falls = waterfallService.getUmeiWaters();
-		        if(falls.getFalls()==null){
-		        	falls = waterfallService.getWaters();
-		        }
+//		        if(falls.getFalls()==null){
+//		        	falls = waterfallService.getWaters();
+//		        }
 		        handler.sendEmptyMessage(1000);
 			}
 		});
