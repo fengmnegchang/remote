@@ -260,6 +260,7 @@ public class UmeiHtmlParse {
 							fall = new Waterfall();
 							System.out.println(ahref.getAttribute("href"));
 							fall.setUrl(ahref.getAttribute("href"));
+							fall.setSubUrl(ahref.getAttribute("href"));
 						}
 						
 						try {

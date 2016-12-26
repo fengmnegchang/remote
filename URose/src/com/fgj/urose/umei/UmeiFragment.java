@@ -41,57 +41,54 @@ public class UmeiFragment extends Fragment {
 	private Waterfalls falls;
 	private UmeiAdapter umeiAdapter;
 	private String url;
-	
-	public static UmeiFragment newInstance(String url){
+
+	public static UmeiFragment newInstance(String url) {
 		UmeiFragment fragment = new UmeiFragment();
 		fragment.url = url;
 		return fragment;
 	}
-	
-	private Handler handler = new Handler(){
+
+	private Handler handler = new Handler() {
 
 		@Override
 		public void handleMessage(Message msg) {
-			if(msg.what==1000){
+			if (msg.what == 1000) {
 				umeiAdapter = new UmeiAdapter(falls);
-		        listview.setAdapter(umeiAdapter);
-		        listview.setOnItemClickListener(new OnItemClickListener() {
+				listview.setAdapter(umeiAdapter);
+				listview.setOnItemClickListener(new OnItemClickListener() {
 					@Override
-					public void onItemClick(AdapterView<?> arg0, View view,
-							int arg2, long arg3) {
+					public void onItemClick(AdapterView<?> arg0, View view, int arg2, long arg3) {
 						UmeiAdapter.ViewHolder holder = (com.fgj.urose.umei.UmeiFragment.UmeiAdapter.ViewHolder) view.getTag();
 						Intent intent = new Intent();
-						intent.putExtra("gaoqingurl", holder.subUrl.getText().toString());
-						intent.setClass(getActivity().getApplicationContext(), 
-								UmeiGaoqingActivity.class);
+						intent.putExtra("URL", holder.subUrl.getText().toString());
+						intent.setClass(getActivity().getApplicationContext(), WebViewActivity.class);
 						getActivity().startActivity(intent);
 					}
 				});
 			}
 			super.handleMessage(msg);
 		}
-		
+
 	};
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.fragment_umei_tab, container,
-				false);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		View rootView = inflater.inflate(R.layout.fragment_umei_tab, container, false);
 		listview = (ListView) rootView.findViewById(R.id.listview);
-		AsyncTask.execute(new Runnable(){
+		AsyncTask.execute(new Runnable() {
 			@Override
 			public void run() {
 				waterfallService = new WaterfallService(getActivity().getApplicationContext());
-		        falls = waterfallService.getUmeiWaters(url);
-//		        if(falls.getFalls()==null){
-//		        	falls = waterfallService.getWaters();
-//		        }
-		        handler.sendEmptyMessage(1000);
+				falls = waterfallService.getUmeiWaters(url);
+				// if(falls.getFalls()==null){
+				// falls = waterfallService.getWaters();
+				// }
+				handler.sendEmptyMessage(1000);
 			}
 		});
 		return rootView;
@@ -109,13 +106,14 @@ public class UmeiFragment extends Fragment {
 
 	private class UmeiAdapter extends BaseAdapter {
 		Waterfalls falls;
+
 		public UmeiAdapter(Waterfalls falls) {
 			this.falls = falls;
 		}
 
 		@Override
 		public int getCount() {
-			if(falls.getFalls() ==null){
+			if (falls.getFalls() == null) {
 				return 0;
 			}
 			return falls.getFalls().size();
@@ -123,7 +121,7 @@ public class UmeiFragment extends Fragment {
 
 		@Override
 		public Object getItem(int arg0) {
-			if(falls.getFalls() ==null){
+			if (falls.getFalls() == null) {
 				return null;
 			}
 			return falls.getFalls().get(arg0);
@@ -138,8 +136,7 @@ public class UmeiFragment extends Fragment {
 		public View getView(int position, View convertView, ViewGroup parent) {
 			ViewHolder viewHolder = null;
 			if (convertView == null) {
-				LayoutInflater inflater = LayoutInflater
-						.from(getActivity().getApplicationContext());
+				LayoutInflater inflater = LayoutInflater.from(getActivity().getApplicationContext());
 				convertView = inflater.inflate(R.layout.item_list_view, null);
 				viewHolder = new ViewHolder();
 				viewHolder.img = (ImageView) convertView.findViewById(R.id.img);
@@ -151,14 +148,13 @@ public class UmeiFragment extends Fragment {
 			}
 			// viewHolder.img.setImageResource(icons[position]);
 			// viewHolder.title.setText(menus[position]);
-			umeiTask = new UmeiAsyncTask(viewHolder.img, 
-					getActivity().getApplicationContext(), 
-					falls.getFalls().get(position).getImageName());
+			umeiTask = new UmeiAsyncTask(viewHolder.img, getActivity().getApplicationContext(), falls.getFalls().get(position).getImageName());
 			umeiTask.execute(falls.getFalls().get(position).getUrl());
 			viewHolder.title.setText(falls.getFalls().get(position).getTitle());
 			viewHolder.subUrl.setText(falls.getFalls().get(position).getSubUrl());
 			return convertView;
 		}
+
 		private class ViewHolder {
 			ImageView img;
 			TextView title;
@@ -167,8 +163,7 @@ public class UmeiFragment extends Fragment {
 
 	}
 
-	private  class UmeiAsyncTask extends
-			AsyncTask<String, Integer, Drawable> {
+	private class UmeiAsyncTask extends AsyncTask<String, Integer, Drawable> {
 		ImageView img;
 		Context context;
 		String localResName;
@@ -195,13 +190,13 @@ public class UmeiFragment extends Fragment {
 				msg.what = 1;
 			} else {
 				msg.what = 0;
-//				int resId = context.getResources().getIdentifier(localResName,
-//						"drawable", context.getPackageName());
+				// int resId =
+				// context.getResources().getIdentifier(localResName,
+				// "drawable", context.getPackageName());
 				try {
-					InputStream inputStream = context.getResources().getAssets().open("waterfall/"
-							+ localResName);
+					InputStream inputStream = context.getResources().getAssets().open("waterfall/" + localResName);
 					Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-					Drawable drawable =new BitmapDrawable(bitmap);
+					Drawable drawable = new BitmapDrawable(bitmap);
 					img.setBackground(drawable);
 				} catch (IOException e) {
 					e.printStackTrace();
@@ -235,7 +230,7 @@ public class UmeiFragment extends Fragment {
 				HttpClient hc = new DefaultHttpClient();
 				HttpGet hg = new HttpGet(params[0]);
 				HttpResponse hr = hc.execute(hg);
-//				bm = BitmapFactory.decodeStream(hr.getEntity().getContent());
+				// bm = BitmapFactory.decodeStream(hr.getEntity().getContent());
 				// menuDrawable =
 				bm = Drawable.createFromStream(hr.getEntity().getContent(), "");
 			} catch (Exception e) {
