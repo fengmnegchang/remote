@@ -35,7 +35,8 @@ public class UmeiActivity extends FragmentActivity {
 	public final static int TAB_INDEX_TAB_2 = 1;
 	public final static int TAB_INDEX_TAB_3 = 2;
 	public final static int TAB_INDEX_TAB_4 = 3;
-	public final static int TAB_COUNT = 4;
+	public final static int TAB_INDEX_TAB_5 = 4;
+	public final static int TAB_COUNT = 5;
 
 	private ViewPager mViewPager;
 	private ActionBar actionBar;
@@ -56,6 +57,7 @@ public class UmeiActivity extends FragmentActivity {
 		setupTest2();
 		setupTest3();
 		setupTest4();
+		setupTest5();
 
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		getFragmentManager();
@@ -98,8 +100,16 @@ public class UmeiActivity extends FragmentActivity {
 
 	private void setupTest4() {
 		Tab tab = actionBar.newTab();
-		tab.setContentDescription("最新");
-		tab.setText("最新");
+		tab.setContentDescription("欧美");
+		tab.setText("欧美");
+		tab.setTabListener(mTabListener);
+		actionBar.addTab(tab);
+	}
+	
+	private void setupTest5() {
+		Tab tab = actionBar.newTab();
+		tab.setContentDescription("秀人模特");
+		tab.setText("秀人模特");
 		tab.setTabListener(mTabListener);
 		actionBar.addTab(tab);
 	}
@@ -147,7 +157,28 @@ public class UmeiActivity extends FragmentActivity {
 
 		@Override
 		public Fragment getItem(int arg0) {
-			UmeiFragment fragment = new UmeiFragment();
+			String url = "http://www.umei.cc/p/gaoqing/rihan/1.htm";
+			switch (arg0) {
+			case 0:
+				 url = "http://www.umei.cc/p/gaoqing/rihan/1.htm";
+				break;
+			case 1:
+				 url = "http://www.umei.cc/p/gaoqing/cn/1.htm";
+				 
+				break;
+			case 2:
+				url = "http://www.umei.cc/p/gaoqing/gangtai/1.htm";
+				break;
+			case 3:
+				url = "http://www.umei.cc/p/gaoqing/xiuren_VIP/1.htm";
+				break;
+			case 4:
+				url = "http://www.umei.cc/p/gaoqing/oumei/1.htm";
+				break;
+			default:
+				break;
+			}
+			UmeiFragment fragment = UmeiFragment.newInstance(url);
 			return fragment;
 			// switch (arg0) {
 			// case TAB_INDEX_TAB_1:

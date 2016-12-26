@@ -40,6 +40,13 @@ public class UmeiFragment extends Fragment {
 	private WaterfallService waterfallService;
 	private Waterfalls falls;
 	private UmeiAdapter umeiAdapter;
+	private String url;
+	
+	public static UmeiFragment newInstance(String url){
+		UmeiFragment fragment = new UmeiFragment();
+		fragment.url = url;
+		return fragment;
+	}
 	
 	private Handler handler = new Handler(){
 
@@ -80,7 +87,7 @@ public class UmeiFragment extends Fragment {
 			@Override
 			public void run() {
 				waterfallService = new WaterfallService(getActivity().getApplicationContext());
-		        falls = waterfallService.getUmeiWaters();
+		        falls = waterfallService.getUmeiWaters(url);
 //		        if(falls.getFalls()==null){
 //		        	falls = waterfallService.getWaters();
 //		        }

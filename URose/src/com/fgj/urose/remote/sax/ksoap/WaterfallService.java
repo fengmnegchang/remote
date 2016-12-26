@@ -52,12 +52,12 @@ public class WaterfallService {
 		return falls;
 	}
 
-	public Waterfalls getUmeiWaters() {
+	public Waterfalls getUmeiWaters(String url) {
 		Waterfalls falls = new Waterfalls();
 		try {
-			String URL = "http://www.umei.cc/p/gaoqing/rihan/index-1.htm";
+//			String URL = "http://www.umei.cc/p/gaoqing/rihan/index-1.htm";
 			UmeiHtmlParse parse = new UmeiHtmlParse();
-			falls = parse.getHtmlFalls();
+			falls = parse.getHtmlFalls(url);
 		} catch (Exception e) {
 		}
 		return falls;
